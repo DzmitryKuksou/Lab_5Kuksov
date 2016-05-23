@@ -30,7 +30,7 @@ void Tovar::SetBrand(char* brand)
 }
 void Tovar::SetStorageTime(char* storagetime)
 {
-	strcpy(StorageTime, storagetime);
+	strcpy(StorageTime,storagetime);
 }
 void Tovar::SetShelflife(char* shelflife)
 {

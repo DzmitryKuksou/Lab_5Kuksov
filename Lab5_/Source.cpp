@@ -3,11 +3,12 @@
 using namespace std;
 Tovar InitTovar();
 Tovar* InitArray(int);
+void DisplayArray(Tovar*, int);
 Tovar SearchByName(Tovar*, int);
 Tovar Search(Tovar*, int);
 int TovarSearch(Tovar*, int, Tovar);
 int SortByName(Tovar, Tovar);
-void BubbleSort();
+void BubbleSort(Tovar*, int);
 const int N = 100;
 int main()
 {
@@ -15,8 +16,10 @@ int main()
 	cout << "Enter size of array:";
 	cin >> n;
 	Tovar* a = InitArray(n);
-	Tovar a1 = InitTovar();
-	a1.DisplayTovar();
+	SearchByName(a, n);
+	cout << "Sorted array:";
+	BubbleSort(a, n);
+	DisplayArray(a, n);
 	system("pause");
 	return 0;
 }
@@ -47,23 +50,23 @@ Tovar InitTovar()
 	while (true)
 	{
 		cout << "Enter the Name of tovar:\n";
-		cin.getline(name, N,'\n');
 		cin.ignore();
+		cin.get(name, N,'\n');
 		cout << "Enter the brand:\n";
-		cin.getline(brand, N, '\n');
 		cin.ignore();
+		cin.get(brand, N, '\n');
 		cout << "Release data:\n";
-		cin.getline(data, N, '\n');
 		cin.ignore();
+		cin.get(data, N, '\n');
 		cout << "Storagetime(the number of days):\n";
-		cin.getline(data, N, '\n');
 		cin.ignore();
+		cin.get(data, N, '\n');
 		cout << "Shelftime(the number of days):\n";
-		cin.getline(data, N, '\n');
 		cin.ignore();
+		cin.get(data, N, '\n');
 		cout << "Cost:\n$";
-		cin.getline(cost, N, '\n');
 		cin.ignore();
+		cin.get(cost, N, '\n');
 		break;
 	}
 	c.SetTovar(name, brand, data, shelftime, cost, storagetime);
@@ -83,15 +86,25 @@ Tovar SearchByName(Tovar* c, int n)
 {
 	char a[N];
 	Tovar b;
+	int k = 0;
 	cout << "Enter The Name of Tovar:";
-	cin.getline(a, N, '\n');
+	cin.ignore();
+	cin.get(a, N, '\n');
 	for (int i = 0; i < n; i++)
 	{
+		
 		if (!strcmp(c[i].GetName(), a))
 		{
 			b = c[i]; break;
+			k++;
 		}
 	}
+	if (k==0)
+	{
+		cout << "no tovar";
+		exit(0);
+	}
+
 	b.DisplayTovar();
 	return b;
 }
