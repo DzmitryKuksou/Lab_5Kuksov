@@ -30,7 +30,7 @@ void Tovar::SetBrand(char* brand)
 }
 void Tovar::SetStorageTime(char* storagetime)
 {
-	strcpy(StorageTime,storagetime);
+	strcpy(StorageTime, storagetime);
 }
 void Tovar::SetShelflife(char* shelflife)
 {
@@ -70,7 +70,7 @@ char* Tovar::GetCost()
 }
 void Tovar::DisplayTovar()
 {
-	cout << "Name:" << Name;
+	cout << "Name:" << Name << endl;
 	cout << "Realyse:" << Data << endl;
 	cout << "Brand:" << Brand << endl;
 	cout << "StorageTime" << StorageTime << endl;

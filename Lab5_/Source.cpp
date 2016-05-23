@@ -6,7 +6,7 @@ Tovar* InitArray(int);
 Tovar SearchByName(Tovar*, int);
 Tovar Search(Tovar*, int);
 int TovarSearch(Tovar*, int, Tovar);
-int SortByName(Tovar , Tovar );
+int SortByName(Tovar, Tovar);
 void BubbleSort();
 const int N = 100;
 int main()
@@ -14,13 +14,15 @@ int main()
 	int n;
 	cout << "Enter size of array:";
 	cin >> n;
-	InitArray(n);
+	Tovar* a = InitArray(n);
+	Tovar a1 = InitTovar();
+	a1.DisplayTovar();
 	system("pause");
 	return 0;
 }
-void Swap(int &a, int &b)
+void Swap(Tovar &a, Tovar &b)
 {
-	int t = a;
+	Tovar t = a;
 	a = b;
 	b = t;
 }
@@ -28,9 +30,12 @@ void BubbleSort(Tovar* a, int size)
 {
 	for (int i = 0; i < size; i++)
 	{
-		for (int j = 0; j < size - i - 1; j++);
+		for (int j = 0; j < size - i - 1; j++)
 		{
-			if (SortByName(a[j], a[j + 1]) > 0); Swap(a[j + 1], a[j]);
+			if (SortByName(a[j], a[j + 1]) < 0)
+			{
+				Swap(a[j], a[j + 1]);
+			}
 		}
 	}
 	
@@ -57,7 +62,7 @@ Tovar InitTovar()
 		cin.getline(data, N, '\n');
 		cin.ignore();
 		cout << "Cost:\n$";
-		cin >> cost;
+		cin.getline(cost, N, '\n');
 		cin.ignore();
 		break;
 	}
